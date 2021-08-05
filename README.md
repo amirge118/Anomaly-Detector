@@ -1,7 +1,8 @@
-Advanced Sofwtware Development - Final Project in Java
+# Flight Gear Simolation - Anomaly-Detector
 
-The project includes a JavaFX desktop application, 
-which displays a GUI interface while simulating a flight with FlightGear simulator using a given time series, 
-implemented MVVC architecture.
-
-
+### <img width="1149" alt="gui p" src="https://user-images.githubusercontent.com/61715620/128372124-96efbaf7-90a4-41df-8ae2-82d75e5ba914.png">
+ 
+* JavaFX desktop application.
+* GUI interface while simulating a flight with FlightGear simulator.
+* Implemented MVVC architecture.
+* Multi threaded development for performance optimization.
