@@ -1,4 +1,4 @@
-# Flight Gear Simolation - Anomaly-Detector
+# Flight Gear Simulation - Anomaly-Detector
 
 ### <img width="1149" alt="gui p" src="https://user-images.githubusercontent.com/61715620/128372124-96efbaf7-90a4-41df-8ae2-82d75e5ba914.png">
  
