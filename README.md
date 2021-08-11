@@ -25,8 +25,8 @@ In the two top charts you can see:
 * the value of the the best coraltion feature to the one the user choosed (if there is one).
 
 #### The app demonstrates how different algorithms detected different deviation moments on different flights.
-There are three diffrent algorithm:
-* Line regression 
+There are three different Anomaly Detectors algorithms:
+* Line regression algorithm
 * Hybrid algorithm
 * Zscore algorithm
 Each algorithm work diffrently
@@ -46,6 +46,6 @@ files on run-time, that
 represent an anomaly
 detection algorithm.
 
-You can see in the picture below the line regression algorithem compared to the circle algorithm that showm in the first picture.
+You can see in the picture below the line regression algorithem compared to the circle algorithm (from Hybrid algorithm) that showm in the first picture.
 
 <img width="618" alt="linepic" src="https://user-images.githubusercontent.com/61715620/128828493-70697db8-4117-46d6-b72e-4752c1370a21.png">
