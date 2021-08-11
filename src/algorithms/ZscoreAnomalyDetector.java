@@ -78,7 +78,7 @@ public class ZscoreAnomalyDetector implements TimeSeriesAnomalyDetector {
             setting_algo.getData().add(new XYChart.Data(0, selected_f_size));
             algo_points.setName("Zscore-Algo");
             setting_algo.setName("setting-Algo");
-            learning_points.setName("learning");
+            learning_points.setName("Learning");
             points.add(learning_points);
             points.add(algo_points);
             points.add(setting_algo);
@@ -117,4 +117,8 @@ public class ZscoreAnomalyDetector implements TimeSeriesAnomalyDetector {
         }
         return maxZscore;
     }
-}
+
+    public int test(){
+       return zscoremap.size()!=0?zscoremap.size():0;
+    }
+    }

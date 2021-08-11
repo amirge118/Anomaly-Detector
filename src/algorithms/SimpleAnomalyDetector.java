@@ -9,6 +9,18 @@ import java.util.List;
 
 public class SimpleAnomalyDetector implements TimeSeriesAnomalyDetector {
 
+	public HashMap<String, AlgorithmMinCircle.LineCorrelatedFeatures> getCorrelatedFeaturesList() {
+		return correlatedFeaturesList;
+	}
+
+	public HashMap<String, String> getBest_corlation_couples() {
+		return best_corlation_couples;
+	}
+
+	public HashMap<String, List<AnomalyReport>> getAnomalyReportList() {
+		return anomalyReportList;
+	}
+
 	HashMap<String, AlgorithmMinCircle.LineCorrelatedFeatures> correlatedFeaturesList;
 	HashMap<String, String> best_corlation_couples;
 	public HashMap<String, List<AnomalyReport>> anomalyReportList;
@@ -51,49 +63,21 @@ public class SimpleAnomalyDetector implements TimeSeriesAnomalyDetector {
 	@Override
 	public HashMap<String,List<AnomalyReport>> detect(TimeSeries ts) {
 		Point p;
-		for (AlgorithmMinCircle.LineCorrelatedFeatures correlatedFeatures:correlatedFeaturesList.values()) {
-				for (int i = 0; i < ts.getSizeOfVector(); i++) {
-					p = new Point(ts.valueAtIndex(i, correlatedFeatures.feature1), ts.valueAtIndex(i, correlatedFeatures.feature2));
-					if (StatLib.dev(p, correlatedFeatures.lin_reg) > correlatedFeatures.max_div) {
-						if (!anomalyReportList.containsKey(correlatedFeatures.feature1))
-							anomalyReportList.put(correlatedFeatures.feature1, new LinkedList<>());
+		for (AlgorithmMinCircle.LineCorrelatedFeatures correlatedFeatures : correlatedFeaturesList.values()) {
+			for (int i = 0; i < ts.getSizeOfVector(); i++) {
+				p = new Point(ts.valueAtIndex(i, correlatedFeatures.feature1), ts.valueAtIndex(i, correlatedFeatures.feature2));
+				if (StatLib.dev(p, correlatedFeatures.lin_reg) > correlatedFeatures.max_div) {
+					if (!anomalyReportList.containsKey(correlatedFeatures.feature1))
+						anomalyReportList.put(correlatedFeatures.feature1, new LinkedList<>());
 
-						anomalyReportList.get(correlatedFeatures.feature1).add(new AnomalyReport("anomaly at "+correlatedFeatures.feature1 + "-with-"
-								+ correlatedFeatures.feature2+"in time"+(i + 1), correlatedFeatures.feature2, (long) i + 1));
-					}
+					anomalyReportList.get(correlatedFeatures.feature1).add(new AnomalyReport("anomaly at " + correlatedFeatures.feature1 + "-with-"
+							+ correlatedFeatures.feature2 + "in time" + (i + 1), correlatedFeatures.feature2, (long) i + 1));
 				}
 			}
+		}
 		return anomalyReportList;
 
-
-//
-//		XYChart.Series series= new XYChart.Series();
-//		XYChart.Series series2= new XYChart.Series();
-//		List<XYChart.Series> points =new LinkedList<>();
-//
-//		float[] best_c_vals,feature_vals;
-//		feature_vals = ts.getHashMap().get(feature);
-//		if(correlatedFeaturesList.containsKey(feature)) {
-//			LineCorrelatedFeatures correlatedFeature= this.correlatedFeaturesList.get(feature);
-//			best_c_vals = ts.getHashMap().get(best_corlation_couples.get(feature));
-//			for (int i = 0; i < feature_vals.length; i++) {
-//				if (StatLib.dev(new Point(feature_vals[i], best_c_vals[i]), correlatedFeature.lin_reg) > correlatedFeature.max_div) {
-//					series2.getData().add(new XYChart.Data(feature_vals[i], best_c_vals[i], i));
-//				} else {
-//					series.getData().add(new XYChart.Data(feature_vals[i], best_c_vals[i], i));
-//				}
-//			}
-//		}else{
-//			for (int i = 0; i < feature_vals.length; i++) {
-//				series2.getData().add(new XYChart.Data(i,feature_vals[i],i));
-//			}
-//
-//		}
-//		points.add(series);
-//		points.add(series2);
-//		return points;
 	}
-
 	@Override
 	public List<XYChart.Series> paint(TimeSeries ts, String feature) {
 		List<XYChart.Series> points = new LinkedList<>();
@@ -115,7 +99,7 @@ public class SimpleAnomalyDetector implements TimeSeriesAnomalyDetector {
 			setting_algo.getData().add(new XYChart.Data(min, max));
 			setting_algo.getData().add(new XYChart.Data(line.a * min + line.b, line.a * max + line.b));
 			setting_algo.getData().add(new XYChart.Data(0, 30));
-			learning_points.setName("Lerning");
+			learning_points.setName("Learning");
 			algo_points.setName("Line-Reg-Algo");
 			setting_algo.setName("setting-Algo");
 		}else
@@ -138,4 +122,8 @@ public class SimpleAnomalyDetector implements TimeSeriesAnomalyDetector {
 		}
 		return null;
 	}
+
+	 public int test(){
+		return correlatedFeaturesList.size()!=0?correlatedFeaturesList.size():0;
+	 }
 }

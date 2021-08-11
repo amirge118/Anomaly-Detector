@@ -1,8 +1,8 @@
-package app;
+package src.app;
 
 public class RunMain {
 
     public static void main(String [] args) {
-        Main.main(args);
+        app.Main.main(args);
     }
 }

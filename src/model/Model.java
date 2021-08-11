@@ -376,8 +376,8 @@ public class Model extends Observable  {
                 public void run() {
                    // System.out.println("sending row "+ timestep.get() + " with time speed: " + time_speed.get());
                     String row_data = timeSeries.row_array(timestep.get());
-                    out2fg.println(row_data);
-                    out2fg.flush();
+                   // out2fg.println(row_data);
+                   // out2fg.flush();
                     timestep.set(timestep.get()+1);
 
                 }

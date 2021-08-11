@@ -103,7 +103,7 @@ public class View {
 //     and send notification to the view-model to connect
       public void connectFg() {
         if(checkFlightGearProcess()==true){
-            vm.connect2fg();
+            //vm.connect2fg();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);

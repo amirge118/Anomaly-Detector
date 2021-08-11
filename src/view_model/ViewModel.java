@@ -140,7 +140,7 @@ public class ViewModel implements Observer {
     }
 
     public void connect2fg(){
-        model.csvToFg();
+      //  model.csvToFg();
     }
 
     public boolean set_detect_TimeSeries(File f) {

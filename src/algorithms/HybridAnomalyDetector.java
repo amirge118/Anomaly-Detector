@@ -187,7 +187,7 @@ public class HybridAnomalyDetector implements TimeSeriesAnomalyDetector {
             return null;
 
         setting_algo.setName("setting-Algo");
-        learning_points.setName("Larning");
+        learning_points.setName("Learning");
         points.add(learning_points);
         points.add(Algo_points);
         points.add(setting_algo);
@@ -230,4 +230,13 @@ public class HybridAnomalyDetector implements TimeSeriesAnomalyDetector {
         return null;
     }
 
+    public int[] test(){
+        int [] test = new int[3];
+        test[0]=LinecorrelatedFeaturesList.size()!=0?LinecorrelatedFeaturesList.size():0;
+        test[1]=CirclecorrelatedFeaturesList.size()!=0?CirclecorrelatedFeaturesList.size():0;
+        test[2]=zscoremap.size()!=0?zscoremap.size():0;
+
+        return test;
+
+    }
 }
